@@ -1,190 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌸 애진화방 통합 시스템</title>
 
-  <title>🌼애진화방🌼</title>
-
-  <style>
+<style>
     * {
-      box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f5f8;
-      color: #333;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      min-height: 100vh;
-      background: white;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        color: #333;
     }
 
     .header {
-      padding: 25px 20px 20px;
-      text-align: center;
+        background: white;
+        padding: 20px 15px 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
     }
 
     .header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .header p {
-      margin: 8px 0 0;
-      color: #888;
-      font-size: 14px;
+        margin: 0;
+        font-size: 22px;
     }
 
     .tabs {
-      display: flex;
-      padding: 0 15px;
-      gap: 8px;
-    }
-
-    .tab {
-      flex: 1;
-      padding: 15px 10px;
-      border: none;
-      border-radius: 12px 12px 0 0;
-      background: #eeeeee;
-      color: #777;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .tab.active {
-      background: #333;
-      color: white;
-    }
-
-    .content {
-      padding: 25px 20px;
-      text-align: center;
-    }
-
-    .content h2 {
-      margin-top: 10px;
-    }
-
-    .content p {
-      color: #777;
-      line-height: 1.6;
-    }
-
-    .go-button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 14px 25px;
-      border-radius: 10px;
-      background: #333;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="container">
-
-    <div class="header">
-      <h1>🌼애진화방🌼</h1>
-      <p>원하는 프로그램을 선택해주세요</p>
-    </div>
-
-    <div class="tabs">
-
-      <button class="tab active" onclick="openProgram('flower')">
-        🌷 꽃 검색
-      </button>
-
-      <button class="tab" onclick="openProgram('club')">
-        🏆 상회 관리
-      </button>
-
-    </div>
-
-    <div class="content" id="content">
-
-      <h2>🌷 꽃 검색</h2>
-
-      <p>
-        꽃 이름을 검색하고<br>
-        소유자 및 경기 정보를 확인할 수 있습니다.
-      </p>
-
-      <a
-        class="go-button"
-        href="https://flowersearch.github.io/PLANAJ/"
-      >
-        꽃 검색 프로그램 열기
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <script>
-
-    function openProgram(program) {
-
-      const tabs = document.querySelectorAll('.tab');
-
-      tabs.forEach(tab => {
-        tab.classList.remove('active');
-      });
-
-      if (program === 'flower') {
-
-        tabs[0].classList.add('active');
-
-        document.getElementById('content').innerHTML = `
-          <h2>🌷 꽃 검색</h2>
-
-          <p>
-            꽃 이름을 검색하고<br>
-            소유자 및 경기 정보를 확인할 수 있습니다.
-          </p>
-
-          <a
-            class="go-button"
-            href="https://flowersearch.github.io/PLANAJ/"
-          >
-            꽃 검색 프로그램 열기
-          </a>
-        `;
-
-      } else {
-
-        tabs[1].classList.add('active');
-
-        document.getElementById('content').innerHTML = `
-          <h2>🏆 상회 관리</h2>
-
-          <p>
-            애진화방 상회 관리 프로그램입니다.
-          </p>
-
-          <a
-            class="go-button"
-            href="https://flowersearch.github.io/AJ/"
-          >
-            상회 관리 프로그램 열기
-          </a>
-        `;
-      }
-    }
-
-  </script>
-
-</body>
-</html>
+        display: flex;
+        background: white;
+        border
