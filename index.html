@@ -32,4 +32,151 @@
     .tabs {
         display: flex;
         background: white;
-        border
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tab {
+        flex: 1;
+        padding: 15px 5px;
+        border: none;
+        background: #f1f1f1;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #777;
+    }
+
+    .tab.active {
+        background: white;
+        color: #333;
+        border-bottom: 3px solid #333;
+    }
+
+    .content {
+        padding: 15px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .program {
+        display: none;
+    }
+
+    .program.active {
+        display: block;
+    }
+
+    .program-button {
+        width: 100%;
+        padding: 18px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .program-button:active {
+        transform: scale(0.98);
+    }
+
+    iframe {
+        width: 100%;
+        height: calc(100vh - 140px);
+        min-height: 600px;
+        border: none;
+        background: white;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+        .header h1 {
+            font-size: 20px;
+        }
+
+        .tab {
+            font-size: 15px;
+            padding: 14px 3px;
+        }
+
+        iframe {
+            height: calc(100vh - 125px);
+            min-height: 550px;
+            border-radius: 0;
+        }
+
+        .content {
+            padding: 8px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🌸 애진화방 통합 시스템</h1>
+</div>
+
+<div class="tabs">
+
+    <!-- 기존 꽃 검색 탭 → 상회 경기로 변경 -->
+    <button class="tab active" onclick="showProgram('game', this)">
+        🏆 상회 경기
+    </button>
+
+    <!-- 기존 상회 관리 탭 → 꽃 검색으로 변경 -->
+    <button class="tab" onclick="showProgram('flower', this)">
+        🌷 꽃 검색
+    </button>
+
+</div>
+
+<div class="content">
+
+    <!-- 🏆 상회 경기 -->
+    <div id="game" class="program active">
+        <iframe
+            src="https://flowersearch.github.io/PLANAJ/"
+            title="상회 경기">
+        </iframe>
+    </div>
+
+    <!-- 🌷 꽃 검색 -->
+    <div id="flower" class="program">
+        <iframe
+            src="https://flowersearch.github.io/AJ/"
+            title="꽃 검색">
+        </iframe>
+    </div>
+
+</div>
+
+<script>
+
+function showProgram(program, button) {
+
+    // 모든 프로그램 숨기기
+    document.querySelectorAll('.program').forEach(function(item) {
+        item.classList.remove('active');
+    });
+
+    // 선택한 프로그램 보이기
+    document.getElementById(program).classList.add('active');
+
+    // 모든 탭 비활성화
+    document.querySelectorAll('.tab').forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    // 선택한 탭 활성화
+    button.classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
