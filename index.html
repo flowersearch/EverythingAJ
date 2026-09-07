@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🌸 애진화방 통합 시스템</title>
+<title>🌸 애진화방 🌸</title>
 
 <style>
 * {
@@ -18,166 +18,116 @@ body {
     color: #333;
 }
 
+/* 상단 */
 .header {
     background: white;
-    padding: 20px 15px 15px;
+    padding: 25px 15px 20px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 22px;
+    font-size: 25px;
 }
 
-.tabs {
+/* 앱 영역 */
+.apps {
     display: flex;
-    background: white;
-    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    gap: 18px;
+    padding: 30px 15px;
 }
 
-.tab {
-    flex: 1;
-    padding: 15px 5px;
-    border: none;
-    background: #f1f1f1;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #777;
-}
+/* 앱 버튼 */
+.app {
+    width: 145px;
+    height: 145px;
 
-.tab.active {
     background: white;
+    border-radius: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
     color: #333;
-    border-bottom: 3px solid #333;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+
+    transition: transform 0.15s ease,
+                box-shadow 0.15s ease;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-.content {
-    padding: 15px;
-    max-width: 1000px;
-    margin: auto;
+/* 앱 이름 */
+.app-name {
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.program {
-    display: none;
+/* 클릭 효과 */
+.app:active {
+    transform: scale(0.94);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
-.program.active {
-    display: block;
-}
+/* 작은 화면 */
+@media (max-width: 400px) {
 
-iframe {
-    width: 100%;
-    height: calc(100vh - 140px);
-    min-height: 600px;
-    border: none;
-    background: white;
-    border-radius: 10px;
-}
-
-@media (max-width: 600px) {
-
-    .header h1 {
-        font-size: 20px;
+    .apps {
+        gap: 12px;
+        padding: 25px 10px;
     }
 
-    .tab {
-        font-size: 15px;
-        padding: 14px 3px;
+    .app {
+        width: 135px;
+        height: 135px;
+        border-radius: 22px;
     }
 
-    iframe {
-        height: calc(100vh - 125px);
-        min-height: 550px;
-        border-radius: 0;
-    }
-
-    .content {
-        padding: 8px;
+    .app-name {
+        font-size: 19px;
     }
 }
+
 </style>
-
 </head>
 
 <body>
 
-<!-- 상단 제목 -->
+<!-- 제목 -->
 <div class="header">
-    <h1>🌸 애진화방 통합 시스템</h1>
+    <h1>🌸 애진화방 🌸</h1>
 </div>
 
 
-<!-- 탭 -->
-<div class="tabs">
+<!-- 앱 메뉴 -->
+<div class="apps">
 
     <!-- 상회 경기 -->
-    <button
-        class="tab active"
-        onclick="showProgram('game', this)">
-        🏆 상회 경기
-    </button>
+    <a
+        class="app"
+        href="https://flowersearch.github.io/PLANAJ/">
+
+        <div class="app-name">상회 경기</div>
+
+    </a>
+
 
     <!-- 꽃 검색 -->
-    <button
-        class="tab"
-        onclick="showProgram('flower', this)">
-        🌷 꽃 검색
-    </button>
+    <a
+        class="app"
+        href="https://flowersearch.github.io/AJ/">
+
+        <div class="app-name">꽃 검색</div>
+
+    </a>
 
 </div>
-
-
-<!-- 프로그램 영역 -->
-<div class="content">
-
-    <!-- 🏆 상회 경기 -->
-    <div id="game" class="program active">
-
-        <iframe
-            src="https://flowersearch.github.io/PLANAJ/"
-            title="상회 경기">
-        </iframe>
-
-    </div>
-
-
-    <!-- 🌷 꽃 검색 -->
-    <div id="flower" class="program">
-
-        <iframe
-            src="https://flowersearch.github.io/AJ/"
-            title="꽃 검색">
-        </iframe>
-
-    </div>
-
-</div>
-
-
-<script>
-
-function showProgram(program, button) {
-
-    // 모든 프로그램 숨기기
-    document.querySelectorAll('.program').forEach(function(item) {
-        item.classList.remove('active');
-    });
-
-    // 선택한 프로그램 보여주기
-    document.getElementById(program).classList.add('active');
-
-    // 모든 탭 비활성화
-    document.querySelectorAll('.tab').forEach(function(tab) {
-        tab.classList.remove('active');
-    });
-
-    // 선택한 탭 활성화
-    button.classList.add('active');
-}
-
-</script>
 
 </body>
 </html>
