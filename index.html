@@ -14,86 +14,124 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f8f8f8;
+
+    background: #FFF1F7;
     color: #333;
+
+    min-height: 100vh;
 }
 
 /* 상단 */
 .header {
-    background: white;
-    padding: 25px 15px 20px;
+    background: #FFF8FB;
+
+    padding: 20px 15px 12px;
+
     text-align: center;
-    border-bottom: 1px solid #eee;
+
+    border-bottom: 1px solid #F3DDE7;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 25px;
+
+    font-size: 24px;
+
+    color: #5A4550;
+
+    letter-spacing: 1px;
 }
 
-/* 앱 영역 */
+/* 탭 영역 */
 .apps {
     display: flex;
+
     justify-content: center;
-    gap: 18px;
-    padding: 30px 15px;
+
+    gap: 8px;
+
+    padding: 10px 10px;
+
+    background: #FFF8FB;
 }
 
-/* 앱 버튼 */
+/* 탭 버튼 */
 .app {
-    width: 145px;
-    height: 145px;
+    width: 105px;
+    height: 42px;
 
-    background: white;
-    border-radius: 24px;
+    background: #FFFFFF;
+
+    border-radius: 12px;
 
     display: flex;
-    flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-decoration: none;
+
     color: #333;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    border: 1px solid #F5E5EC;
 
-    transition: transform 0.15s ease,
-                box-shadow 0.15s ease;
+    box-shadow:
+        0 3px 8px rgba(190, 120, 150, 0.12);
 
-    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
 }
 
-/* 앱 이름 */
+/* 탭 이름 */
 .app-name {
-    font-size: 20px;
+    font-size: 16px;
+
     font-weight: bold;
+
+    color: #333;
+
+    white-space: nowrap;
+}
+
+/* 선택된 탭 */
+.app.active {
+    background: #FBE1EC;
+
+    border-color: #EFC5D5;
 }
 
 /* 클릭 효과 */
 .app:active {
-    transform: scale(0.94);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transform: scale(0.95);
 }
 
-/* 작은 화면 */
-@media (max-width: 400px) {
+/* 프로그램 화면 */
+.program {
+    width: 100%;
 
-    .apps {
-        gap: 12px;
-        padding: 25px 10px;
-    }
+    padding: 0;
 
-    .app {
-        width: 135px;
-        height: 135px;
-        border-radius: 22px;
-    }
-
-    .app-name {
-        font-size: 19px;
-    }
+    margin: 0;
 }
 
+/* 프로그램 */
+.program iframe {
+    width: 100%;
+
+    height: calc(100vh - 105px);
+
+    min-height: 600px;
+
+    border: none;
+
+    display: block;
+
+    background: white;
+}
 </style>
 </head>
 
@@ -105,29 +143,67 @@ body {
 </div>
 
 
-<!-- 앱 메뉴 -->
+<!-- 상단 탭 -->
 <div class="apps">
 
     <!-- 상회 경기 -->
-    <a
-        class="app"
-        href="https://flowersearch.github.io/PLANAJ/">
+    <div
+        class="app active"
+        onclick="showProgram('https://flowersearch.github.io/PLANAJ/', this)">
 
-        <div class="app-name">상회 경기</div>
+        <div class="app-name">
+            상회 경기
+        </div>
 
-    </a>
+    </div>
 
 
     <!-- 꽃 검색 -->
-    <a
+    <div
         class="app"
-        href="https://flowersearch.github.io/AJ/">
+        onclick="showProgram('https://flowersearch.github.io/AJ/', this)">
 
-        <div class="app-name">꽃 검색</div>
+        <div class="app-name">
+            꽃 검색
+        </div>
 
-    </a>
+    </div>
 
 </div>
+
+
+<!-- 프로그램 표시 영역 -->
+<div class="program">
+
+    <iframe
+        id="programFrame"
+        src="https://flowersearch.github.io/PLANAJ/">
+    </iframe>
+
+</div>
+
+
+<script>
+
+function showProgram(url, button) {
+
+    // 프로그램 변경
+    document.getElementById("programFrame").src = url;
+
+
+    // 모든 탭 선택 해제
+    document.querySelectorAll(".app").forEach(function(app) {
+
+        app.classList.remove("active");
+
+    });
+
+
+    // 현재 탭 선택
+    button.classList.add("active");
+}
+
+</script>
 
 </body>
 </html>
